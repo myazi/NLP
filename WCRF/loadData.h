@@ -16,7 +16,7 @@ struct Attr_String
 struct Data
 {
     int id;
-    Attr_String *Attr_All;//ÓÃÓÚ×Ö·ûÐÍÊôÐÔ
+    Attr_String *Attr_All;//ç”¨äºŽå­—ç¬¦åž‹å±žæ€§
     Data *next;
     int len;
 };
@@ -27,7 +27,7 @@ public:
     int col;
     int row;
 public:
-    int loadData(dataToMatrix *dtm,char *file)
+    int loadData(dataToMatrix *dtm,const char *file)
     {
         int i=0,j=0,pos=0,k,num;
         char ch=' ';
@@ -45,9 +45,9 @@ public:
         infile.open(file,ios::in);
         while(!infile.eof())
         {
-            getline(infile,tmpstrline,'\n');//¶ÁÈ¡ÎÄ¼þÖÐÒ»ÐÐµÄÊý¾Ý£¬±£´æÎªstringÀàÐÍ
+            getline(infile,tmpstrline,'\n');//è¯»å–æ–‡ä»¶ä¸­ä¸€è¡Œçš„æ•°æ®ï¼Œä¿å­˜ä¸ºstringç±»åž‹
             stringstream input(tmpstrline);
-            if(tmpstrline!="\0")////ÓÉÓÚ¶ÁÈ¡ÎÄ¼þ½áÊø·ûÍ¬Ñù»á¼ÌÐø¸Ã²Ù×÷
+            if(tmpstrline!="\0")////ç”±äºŽè¯»å–æ–‡ä»¶ç»“æŸç¬¦åŒæ ·ä¼šç»§ç»­è¯¥æ“ä½œ
             {
                 datatmp=new Data;
                 datatmp->id=i;
@@ -61,7 +61,7 @@ public:
                     pos=as->attr.find(ch,0);
 
                     as->attr=as->attr.substr(0,pos);
-                    if(as->attr=="£®")
+                    if(as->attr=="ï¼Ž")
                     as->attr=".";
                     num=as->attr.size();
                     astmp=new Attr_String;
@@ -82,7 +82,7 @@ public:
     }
     int print(dataToMatrix dtm)
     {
-        //¼ì²âÊý¾Ý¼ÓÔØÊÇ·ñÕýÈ·
+        //æ£€æµ‹æ•°æ®åŠ è½½æ˜¯å¦æ­£ç¡®
         int i,j;
         Data *p=dtm.dataSet->next;
         Attr_String *as;
